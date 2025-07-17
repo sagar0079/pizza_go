@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import FoodBody from './components/FoodBody';
-
-export const BASE_URL = import.meta.env.PROD ? "" : "http://localhost:9000";
+import foodData from './data/foodData';
 
 const App = () => {
 
@@ -13,24 +12,21 @@ const App = () => {
   const [selectBtn, setSelectBtn] = useState('all');
 
   useEffect( () => {
-    const fetchFoodData = async () => {
-
+    const loadFoodData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(BASE_URL + "/api/food-data");
-  
-        const foodData = await response.json();
-  
+        // Simulate API delay for consistent UX
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
         setData(foodData);
         setFilterData(foodData);
         setLoading(false);
-  
       } catch (error) {
-        setError("unable to fetch data")
+        setError("unable to load data")
       }
     }
 
-    fetchFoodData();
+    loadFoodData();
     
   }, [])
 

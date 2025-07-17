@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BASE_URL, Button } from "../App";
+import { Button } from "../App";
 
 const FoodBody = ( {data} ) => {
   return (
@@ -8,7 +8,7 @@ const FoodBody = ( {data} ) => {
         {data?.map(({name, image, text, price}) => (
             <FoodItem key={name}>
                 <div className="food_img">
-                    <img src = {BASE_URL + image} alt="" />
+                    <img src={image} alt="" />
                 </div>
                 <div className="food_info">
                     <div className="info">
